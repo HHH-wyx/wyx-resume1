@@ -1,26 +1,111 @@
 @import "tailwindcss";
 
+/* 定义主题变量 - 初始为白天模式 */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* 主题色 */
+  --primary-green: #22c55e;
+  --primary-orange: #f97316;
+  --accent-green: #dcfce7;
+  --accent-orange: #ffedd5;
+  
+  /* 白天模式 - 文字颜色改为黑色，确保清晰可见 */
+  --bg-color: #ffffff;
+  --text-color: #111827; /* 黑色，在白色背景下清晰可见 */
+  --card-bg: #ffffff;
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --button-bg: #f3f4f6;
+  --button-hover: #e5e7eb;
+  --border-color: #e5e7eb;
+  --hero-bg: linear-gradient(to right, rgba(34, 197, 94, 0.1), rgba(249, 115, 22, 0.1)); /* 白天模式Hero背景 */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* 全局样式 - 所有元素都使用CSS变量 */
+* {
+  box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* 强制白天模式样式 - 使用!important确保优先级 */
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background-color: white !important;
+  color: black !important;
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* 强制所有文本元素为黑色 */
+h1, h2, h3, h4, h5, h6, p, span, a, li, button {
+  color: black !important;
+}
+
+/* 强制卡片背景为白色，文字为黑色 */
+.bg-white {
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 强制section背景为白色 */
+section {
+  background-color: white !important;
+  border-bottom: 1px solid #f3f4f6 !important;
+}
+
+/* 强制导航栏背景 */
+nav {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* 深色模式下的样式 - 只有当html有dark类时才生效 */
+html.dark {
+  background-color: #0f172a !important;
+  color: white !important;
+}
+
+html.dark body {
+  background-color: #0f172a !important;
+  color: white !important;
+}
+
+html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6, html.dark p, html.dark span, html.dark a, html.dark li, html.dark button {
+  color: white !important;
+}
+
+html.dark .bg-white {
+  background-color: #1e293b !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+}
+
+html.dark section {
+  background-color: #0f172a !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark nav {
+  background-color: rgba(15, 23, 42, 0.8) !important;
+}
+
+
+
+/* 自定义滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-green);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-orange);
 }
